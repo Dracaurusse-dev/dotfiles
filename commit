@@ -9,5 +9,5 @@ cp $HOME/.vimrc $1/general/
 cp $HOME/.config/hypr/* $1/arch/
 
 git add *
-git commit 
+git commit -m "$2"
 git push
