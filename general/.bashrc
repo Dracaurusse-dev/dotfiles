@@ -15,6 +15,7 @@ PS1='[\u@\h \W]\$ '
 
 export EDITOR=vim
 export SCRCPY_OPTS="-w --turn-screen-off --bit-rate 8M"
+#export TERM="xterm-kitty"
 
 shopt -s autocd
 shopt -s cdspell
@@ -35,7 +36,13 @@ alias get-m4a="yt-dlp -x --audio-format m4a -o ~/Music/track.m4a"
 alias get-mp4="yt-dlp -f bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4 -o ~/Videos/video.mp4"
 alias e="exit"
 alias :q="exit"
+alias q=e
 alias c="clear"
+alias vrc="vim ~/.bashrc"
+alias rl="source ~/.bashrc"
+
+alias vssh="vagrant ssh-config > /tmp/ssh-config-vagrant && kitty +kitten ssh -F /tmp/ssh-config-vagrant default"
+alias ssh="kitty +kitten ssh"
 
 function update()
 {

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ "$#" -ne 2 ]; then
+	echo "you should provide 2 args is this order: dotfile path (where the .git is) and the commit msg"
+fi
+
+cp $HOME/.bashrc $1/general/
+cp $HOME/.vimrc $1/general/
+cp $HOME/.config/hypr/* $1/arch/
+
+git add *
+git commit 
+git push
