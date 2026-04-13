@@ -8,11 +8,13 @@ if [ "$#" -ne 2 ]; then
 	echo "you should provide 2 args is this order: dotfile path (where the .git is) and the commit msg"
 fi
 
-cp --parent -r $HOME/.bashrc $1/general/
-cp --parent -r $HOME/.vimrc $1/general/
-cp --parent -r $HOME/.config/hypr/* $1/arch/
-cp --parent -r $HOME/.config/gtk-4.0/* $1/gtk-4.0/
-cp --parent -r $HOME/.config/waybar/* $1/waybar/
+mkdir -p $1/general $1/arch $1/gtk-4.0 $1/waybar
+
+cp  -r $HOME/.bashrc $1/general/
+cp  -r $HOME/.vimrc $1/general/
+cp  -r $HOME/.config/hypr/* $1/arch/
+cp  -r $HOME/.config/gtk-4.0/* $1/gtk-4.0/
+cp  -r $HOME/.config/waybar/* $1/waybar/
 
 git add *
 git commit -m "$2"

@@ -1,0 +1,20 @@
+#waybar {
+    	color: #8C2B60;
+	background: #F19CBB;
+}
+
+#workspaces button {
+	color: #8C2B60;
+	background: transparent;
+	padding: 4px 4px;
+	transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#memory {
+	background: transparent;
+	padding: 4px 4px;
+}
+
+#cpu {
+	padding: 4px 4px;
+}

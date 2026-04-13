@@ -1,0 +1,62 @@
+{  
+    "modules-left": [
+	"clock"
+    ],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "gpu"
+    ],
+    "modules-center": [
+    	"hyprland/workspaces"
+    ],
+    /*  ----- Modules Right -----  */
+    "memory": {
+        "format": " {}%",
+    	"interval": 5
+    },
+    "cpu": {
+        "format": "   {usage:2}%",
+	"interval": 5
+    },
+    "battery": {
+    	"states": {
+	    "good": 95,
+	    "warning": 30,
+	    "critical": 15
+	},
+	"format": "{icon} {capacity}%",
+	"format-icons": [
+	    "",
+	    "",
+	    "",
+	    "",
+	    ""
+	]
+    },
+    "gpu": {
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+        "format": "{}%",
+	"interval": 5
+    },
+    /*  ----- Modules Center -----  */
+    "hyprland/workspaces": {
+	"format": "{icon}",
+	"format-icons": {
+            "default": "",
+            "active": ""
+        },
+	"persistent-workspaces": {
+	    "*": 2
+	},
+	"disable-scroll": true,
+	"all-outputs": true,
+	"show-special": true
+    },
+
+    /*  ----- Modules left -----  */
+    "clock": {
+        "format": "{:%H:%M}"
+    }
+}
+
