@@ -40,6 +40,7 @@ alias q=e
 alias c="clear"
 alias vrc="vim ~/.bashrc"
 alias rl="source ~/.bashrc"
+alias doas=sudo
 
 alias vssh="vagrant ssh-config > /tmp/ssh-config-vagrant && kitty +kitten ssh -F /tmp/ssh-config-vagrant default"
 alias ssh="kitty +kitten ssh"
