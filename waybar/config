@@ -34,11 +34,11 @@
 	    ""
 	]
     },
-    "gpu": {
+    /*"gpu": {
         "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
         "format": "{}%",
 	"interval": 5
-    },
+    },*/
     /*  ----- Modules Center -----  */
     "hyprland/workspaces": {
 	"format": "{icon}",

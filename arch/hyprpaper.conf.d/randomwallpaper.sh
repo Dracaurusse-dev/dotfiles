@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/bash
                                                                                                    
-WALL_DIR=/usr/share/wallpapers                                                                     
+WALL_DIR=~/.config/Wallpapers
                                                                                                    
 PICS=($(find -L "${WALL_DIR}" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \)))     
 RANDOM_PIC=${PICS[ $RANDOM % ${#PICS[@]}]}
