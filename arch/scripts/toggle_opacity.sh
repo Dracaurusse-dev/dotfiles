@@ -21,6 +21,6 @@ echo "$new" > "$STATE_FILE"
 
 echo Changed opacity value
 
-hyprctl --batch "keyword decoration:active_opacity $opacity; keyword decoration:inactive_opacity $opacity"
+hyprctl --batch eval "hl.dispatch(hl.config({ decoration = { active_opacity = $opacity, inactive_opacity = $opacity,},}))"
 
 echo Opacity changed

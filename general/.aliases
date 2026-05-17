@@ -22,9 +22,11 @@ alias apdoom="/home/lucas/comp/linux?/crispy-apdoom -game doom -apserver clxrk.d
 
 # Error correcting aliases
 alias car="cat"
+alias bim=vim
 
 # Other aliases
 alias get-m4a="yt-dlp -x --audio-format m4a -o ~/Music/track.m4a"
+alias hypr="cd ~/.config/hypr"
 alias get-mp4="yt-dlp -f bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4 -o ~/Videos/video.mp4"
 alias e="exit"
 alias :q="exit"
