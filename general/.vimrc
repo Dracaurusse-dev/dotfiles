@@ -11,3 +11,5 @@ set autoindent
 inoremap <C-s> *
 noremap <A-j> :m +1<CR>
 noremap <A-k> :m -2<CR>
+
+cnoreabbrev ex Explore

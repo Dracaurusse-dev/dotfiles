@@ -28,7 +28,7 @@ hl.window_rule({ match = { class = ".*" }, tag = "toggle_opacity"})
 
 hl.on("hyprland.start", function ()
 	hl.exec_cmd("[workspace " .. discordWP .. "] discord")
-	hl.exec_cmd("[workspace " .. musicWP   .. "] env __LD_PRELOAD=/usr/lib/spotify-adblock.so spotify")
+	hl.exec_cmd("[workspace " .. musicWP   .. "] env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify")
 	hl.exec_cmd("[workspace " .. codeWP    .. "]" .. terminal)
 	hl.exec_cmd("[workspace " .. browserWP .. "] helium-browser")
 	hl.exec_cmd("[workspace " .. gameWP    .. "] heroic")
