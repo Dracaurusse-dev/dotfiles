@@ -18,3 +18,13 @@
 #cpu {
 	padding: 4px 4px;
 }
+
+#custom-lyrics {
+	color: #8C2B60;
+	margin: 0 5px;
+	padding: 0 10px;
+}
+
+#custom-lyrics.paused {
+	color: #DDDDDD;
+}

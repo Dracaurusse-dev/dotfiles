@@ -4,19 +4,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -f ~/.aliases ]; then
-	. ~/.aliases
-fi
+[[ -f ~/.aliases ]] && . "$HOME/.aliases"
+[[ -f ~/.other   ]] && . "$HOME/.other"
+[[ -f ~/.less    ]] && . "$HOME/.less"
+[[ -f ~/.test    ]] && . "$HOME/.test"
 
-if [ -f ~/.other ]; then
-	. ~/.other
-fi
-
-if [ -f ~/.less ]; then
-	. ~/.less
-fi
-
-
-
-# Created by `pipx` on 2026-05-01 10:45:45
+export LS_COLORS=$LS_COLORS:'di=0;35'
 export PATH="$PATH:/home/lucas/.local/bin"
+export VBOX_LOG_DEST="dir=/var/log/vbox"
+export PS1="\w \$ "

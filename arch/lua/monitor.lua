@@ -2,14 +2,18 @@ hl.monitor({
 	output   = "HDMI-A-1",
 	mode     = "1920x1080@60",
 	position = "0x0",
-	scale    = "auto"
+	scale    = 1,
+	bitdepth = 8,
+	cm	 = "hdredid",
 })
 
 hl.monitor({
 	output   = "eDP-1",
 	mode     = "1920x1080@60",
 	position = "1920x0",
-	scale 	 = "auto"
+	scale 	 = 1,
+	bitdepth = 8,
+	cm 	 = "hdredid",
 })
 
 hl.workspace_rule({workspace = discordWP, monitor = "eDP-1", default = true, persistent = true })
@@ -19,7 +23,7 @@ hl.workspace_rule({workspace = browserWP, monitor = "eDP-1", default = true, per
 hl.workspace_rule({workspace = codeWP, monitor = "HDMI-A-1", default = true, persistent = true })
 
 hl.window_rule({ match = { class = "discord" }, workspace = discordWP })
-hl.window_rule({ match = { class = "spotify" }, workspace = musicWP })
+hl.window_rule({ match = { class = "com.github.th_ch.youtube_music" }, workspace = musicWP })
 hl.window_rule({ match = { class = "helium-browser" }, workspace = browserWP })
 hl.window_rule({ match = { class = "^(heroic|sober|org.vinegarhq.Sober)$" }, workspace = gameWP})
 

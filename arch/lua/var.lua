@@ -1,6 +1,6 @@
 global mainMod = "SUPER"
-global terminal = "kitty"
-global fileManager = "kitty -e yazi"
+global terminal = "alacritty"
+global fileManager = terminal .. " -e yazi"
 global menu = "hyprlauncher"
 
 global discordWP = 11

@@ -8,9 +8,10 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	name = "opac fullscreen",
+	name = "fullscreen",
 	match = { fullscreen = true },
 	opacity = 1,
+	immediate = true,
 })
 
 

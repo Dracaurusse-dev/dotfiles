@@ -1,6 +1,6 @@
 hl.on("hyprland.start", function()
-	hl.exec_cmd("xdg-desktop-portal")
-	hl.exec_cmd("xdg-desktop-portal-gtk")
+--	hl.exec_cmd("xdg-desktop-portal")
+--	hl.exec_cmd("xdg-desktop-portal-gtk")
 	hl.exec_cmd("pipewire")
 	hl.exec_cmd("wireplumber")
 	hl.exec_cmd("pipewire-pulse")
