@@ -1,0 +1,4 @@
+gg() {
+	# usage: gg any research string
+	vimb  -c open $@ 1>&2 2>/dev/null
+}

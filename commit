@@ -7,6 +7,7 @@
 
 if [ "$#" -ne 2 ]; then
 	echo "you should provide 2 args is this order: dotfile path (where the .git is) and the commit msg"
+	exit
 fi
 
 
@@ -16,6 +17,7 @@ mkdir -p $1/general $1/arch $1/gtk-4.0 $1/waybar
 cp    $HOME/.bashrc             $1/general/
 cp    $HOME/.aliases            $1/general/
 cp    $HOME/.less               $1/general/
+cp    $HOME/.functions          $1/general/
 
 cp    $HOME/.vimrc 	        $1/general/
 
