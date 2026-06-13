@@ -12,6 +12,7 @@ hl.bind("Print", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh"))
 
 hl.bind(mainMod .. " + CTRL + D", hl.dsp.exec_cmd("discord --enable-features=UseOzonePlatform --ozone-platform=wayland"))
 hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd("helium-browser"))
+hl.bind(mainMod .. " + CTRL + G", hl.dsp.exec_cmd("vimb"))
 hl.bind(mainMod .. " + CTRL + E", hl.dsp.exec_cmd("heroic"))
 hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd("flatpak run org.vinegarhq.Sober"))
 hl.bind(mainMod .. " + CTRL + M", hl.dsp.exec_cmd("env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify"))

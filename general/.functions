@@ -1,4 +1,8 @@
-gg() {
+function gg {
 	# usage: gg any research string
-	vimb  -c open $@ 1>&2 2>/dev/null
+	vimb -c open "$*" 1>&2 2>/dev/null
+}
+
+function whatargs {
+	echo $@
 }
