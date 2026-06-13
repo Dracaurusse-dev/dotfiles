@@ -14,17 +14,18 @@ fi
 mkdir -p $1/general $1/arch $1/gtk-4.0 $1/waybar
 
 
-cp    $HOME/.bashrc             $1/general/
-cp    $HOME/.aliases            $1/general/
-cp    $HOME/.less               $1/general/
-cp    $HOME/.functions          $1/general/
+cp    $HOME/.bashrc			$1/general/
+cp    $HOME/.aliases			$1/general/
+cp    $HOME/.less			$1/general/
+cp    $HOME/.functions			$1/general/
 
-cp    $HOME/.vimrc 	        $1/general/
+cp    $HOME/.vimrc			$1/general/
 
-cp -r $HOME/.config/hypr/*      $1/arch/
-cp -r $HOME/.config/waybar/*    $1/waybar/
+cp -r $HOME/.config/hypr/*		$1/arch/
+cp -r $HOME/.config/waybar/*		$1/waybar/
+cp -r $HOME/.config/quickshell/*	$1/quickshell
 
-cp -r $HOME/.config/gtk-4.0/*   $1/gtk-4.0/
+cp -r $HOME/.config/gtk-4.0/*		$1/gtk-4.0/
 
 
 git add *
