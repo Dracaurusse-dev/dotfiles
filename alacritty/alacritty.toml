@@ -1,0 +1,17 @@
+[general]
+import = [
+	"~/.config/alacritty/themes/themes/xterm.toml"
+]
+
+[keyboard]
+bindings = [
+	{ key = "Return", mods = "Control|Shift", action = "SpawnNewInstance" }
+]
+
+[terminal]
+
+
+[terminal.shell]
+program = "/bin/bash"
+args= ["-i"]
+
