@@ -1,6 +1,0 @@
-require("lua/var")
-require("lua/functions")
-require("lua/bind")
-require("lua/windowrule")
-require("lua/monitor")
-require("lua/autoexec")
