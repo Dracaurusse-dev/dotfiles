@@ -6,7 +6,7 @@ start_opaque=$(hyprctl getprop "active" "opaque")
 
 hyprctl eval "set_windows_opaque(true)"
 
-hyprshot -zsm region
+hyprshot --clipboard-only -zsm  region
 
 hyprctl eval "set_windows_opaque($start_opaque)"
 

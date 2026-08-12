@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+swaymsg "workspace 2"
+~/.config/sway/scripts/sway-wait discord
+
+swaymsg "workspace 3"
+~/.config/sway/scripts/sway-wait helium
+
+swaymsg "workspace 4"
+~/.config/sway/scripts/sway-wait spotify

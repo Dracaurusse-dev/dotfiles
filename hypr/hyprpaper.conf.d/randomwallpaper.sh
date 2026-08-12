@@ -12,7 +12,7 @@ cat > "$HOME/.config/hypr/hyprpaper.conf" << EOF
 wallpaper  {
 	monitor = 
 	path = ${RANDOM_PIC}
-	fit_mode = cover
+	fit_mode = fill
 }
 ipc = on
 splash = false

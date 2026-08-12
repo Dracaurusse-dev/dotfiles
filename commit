@@ -4,14 +4,35 @@
 # $1: project path
 # $2: commit msg
 
+path=$1
+msg=$2
 
 if [ "$#" -ne 2 ]; then
 	echo "you should provide 2 args is this order: dotfile path (where the .git is) and the commit msg"
 	exit
 fi
 
+function d
+{
+	# usage d dirname
+	# mkdir alias with prefix
+	
+	mkdir -p $path/$1
+}
 
-mkdir -p $1/general $1/hypr $1/gtk-4.0 $1/waybar $1/zdoom $1/Doom	$1/Doom2 $1/Archipelago $1/alacritty $1/fastfetch
+#mkdir -p $1/general $1/hypr $1/gtk-4.0 $1/waybar $1/zdoom $1/Doom	$1/Doom2 $1/Archipelago $1/alacritty $1/fastfetch $1/wallpapers
+d general
+d hypr
+d gtk-4.0
+d waybar
+d zdoom
+d Doom 
+d Doom2
+d Archipelago
+d alacritty
+d fastfetch
+d Wallpapers
+d sway
 
 
 cp    $HOME/.bashrc			$1/general/
@@ -23,13 +44,11 @@ cp    $HOME/.vimrc			$1/general/
 
 cp -r $HOME/.config/hypr/*		$1/hypr/
 cp -r $HOME/.config/waybar/*		$1/waybar/
-cp -r $HOME/.config/quickshell/*	$1/quickshell
-cp -r $HOME/.config/alacritty/*		$1/alacritty
-cp -r $HOME/.config/Archipelago/*	$1/Archipelago
-cp -r $HOME/.config/Doom/*		$1/Doom
-cp -r $HOME/.config/Doom2/*		$1/Doom2
-cp -r $HOME/.config/zdoom/*		$1/zdoom
-cp -r $HOME/.config/fastfetch/*		$1/fastfetch
+cp -r $HOME/.config/quickshell/*	$1/quickshell/
+cp -r $HOME/.config/alacritty/*		$1/alacritty/
+cp -r $HOME/.config/fastfetch/*		$1/fastfetch/
+cp -r $HOME/.config/sway/*		$1/sway/
+cp -r $HOME/.config/Wallpapers/*	$1/Wallpapers/
 
 cp -r $HOME/.config/gtk-4.0/*		$1/gtk-4.0/
 

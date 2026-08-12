@@ -1,0 +1,150 @@
+#!/usr/bin/env bash
+# https://gitlab.com/wef/dotfiles/-/blob/master/bin/gui-toolwait
+TIME_STAMP="20260805.145640"
+
+# dependencies: argp.sh, gui-msg from the same repo
+
+# Copyright (C) 2020-2026 Bob Hepple < bob dot hepple at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+initialise() {
+    PROG=$(basename "$0")
+    VERSION="$TIME_STAMP"
+    USAGE="
+Run 'command', wait for something to happen on-screen, then exit. If no
+window appears in 'timeout' seconds (eg by running a non-GUI program
+like 'date') then terminate.
+
+eg.
+
+    $PROG firefox # this gives time for the window to be created before:
+    swaymsg 'floating disable; border none'
+
+To run more complex commands use '--'. eg.
+
+    $PROG -- bash -c 'some complex bash commands'
+
+This may be similar to the ancient Sun OpenWindows command toolwait or
+the X11 version at
+http://www.ibiblio.org/pub/linux/X11/xutils/toolwait-0.9.tar.gz"
+
+    NEW_ARGS=( )
+
+    ARGS="
+ARGP_DELETE=quiet
+ARGP_VERSION=$VERSION
+ARGP_PROG=$PROG
+##############################################################
+#OPTIONS:
+#name=default sname arg       type range   description
+##############################################################
+TIMEOUT='30'  t     timeout   i    ''      timeout in secs.
+WAITFOR=''    w     waitfor   s    ''      regex for the app_id (wayland) or instance string (xwayland) to wait for (default is the program name).
+NOCHECK=''    n     ''        b    ''      don't check that the window that opens is for that command (default = False).
+##############################################################
+ARGP_ARGS=[--] command
+ARGP_SHORT=$SHORT_DESC
+ARGP_USAGE=$USAGE"
+
+    exec 4>&1
+    eval "$( echo "$ARGS" | argp.sh "$@" 3>&1 1>&4 || echo exit $? )"
+    exec 4>&-
+
+    NEW_ARGS=( "$@" )
+
+    return 0
+}
+
+time_interval() {
+    awk -v s="$1" -v e="$2" 'BEGIN { printf "%.4f\n", e - s }'
+}
+ 
+initialise "$@" && set -- "${NEW_ARGS[@]:-}"
+
+waitfor="${WAITFOR:-$1}"
+
+# run command:
+[[ "$VERBOSE" ]] && echo "$PROG: running '$*'"
+"$@" & pid=$!
+
+initial_time="$EPOCHREALTIME"
+if [[ "$XDG_CURRENT_DESKTOP" == "mango" ]]; then
+    initial_focus=$( mmsg get focusing-client | jq .id )
+fi
+
+retval=0
+
+while true; do
+    read -r -t "$TIMEOUT" event; read_status=$?
+    case $read_status in
+        0) : ;; 
+        1) break ;; # EOF
+        142) retval=142; break ;; # timeout
+    esac
+    
+    if [[ "$XDG_CURRENT_DESKTOP" == "mango" ]]; then
+        [[ "$VERBOSE" ]] && echo "$PROG: got a focus event"
+        id=$( echo "$event" | jq -r ".id" )
+        [[ "$id" == "$initial_focus" ]] && continue
+        app_id=$( echo "$event" | jq -r ".appid" )
+    else
+        type=$( echo "$event" | jq -r --unbuffered '.change' )
+        [[ "$VERBOSE" ]] && echo "$PROG: got a 'window.$type' event"
+        [[ "$type" == "new" ]] || continue
+        app_id=$( echo "$event" | jq -r --unbuffered '.container.app_id // .container.window_properties.class' )
+        id=$( echo "$event" | jq -r --unbuffered '.container.id' )
+    fi
+    
+    [[ "$NOCHECK" || "$app_id" =~ $waitfor ]] && break
+
+    [[ "$VERBOSE" ]] && echo "$PROG: got a focus event for appid '$app_id' id '$id' but I'm waiting for '$waitfor'"
+    elapsed_time=$( time_interval "$initial_time" "$EPOCHREALTIME" )
+
+    if (( "${elapsed_time%.*}" >= TIMEOUT )); then
+        retval=2
+        break
+    fi
+
+    kill -0 "$pid" || {
+        echo "$PROG: process died: '$*'" >&2
+        exit 1
+    }
+
+done < <(
+    if [[ "$XDG_CURRENT_DESKTOP" == "mango" ]]; then
+        mmsg watch focusing-client
+    else
+        gui-msg -m -t subscribe '["window"]'
+    fi
+)
+
+[[ $retval != 0 ]] && {
+    echo "$PROG: timed out, retval='$retval'" >&2
+}
+
+[[ "$VERBOSE" ]] && {
+    elapsed_time=$( time_interval "$initial_time" "$EPOCHREALTIME" )
+    echo "$PROG: terminating after ${elapsed_time}s: exit $retval"
+}
+
+echo "$id"
+exit $retval
+
+# Local Variables:
+# mode: shell-script
+# time-stamp-pattern: "4/TIME_STAMP=\"%:y%02m%02d.%02H%02M%02S\""
+# eval: (add-hook 'before-save-hook 'time-stamp)
+# End:
+

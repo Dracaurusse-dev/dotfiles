@@ -15,6 +15,14 @@ hl.window_rule({
 })
 
 
+hl.window_rule({
+	name = "testcautoclicker",
+	match = { class = "^cautoclicker$"},
+	opacity = 1,
+	fullscreen = true,
+	workspace = codeWP,
+})
+
 -- Default rules
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
