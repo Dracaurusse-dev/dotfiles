@@ -1,0 +1,18 @@
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term    alacritty
+set $browser helium
+set $music   env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform -ozone-platform=wayland
+
+set $codeWP    5
+set $discordWP 6
+set $browserWP 7
+set $musicWP   8
+set $gameWP    9
+
