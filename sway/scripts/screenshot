@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+~/.config/sway/scripts/opacity
+
+slurp | grim -g - - | wl-copy
+
+~/.config/sway/scripts/opacity

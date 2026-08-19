@@ -1,0 +1,10 @@
+opacity="0.9"
+file="/tmp/.sway-transparency-marker"
+
+if [ -f "$file" ]; then
+  rm "$file" &&
+  swaymsg '[title=".*"]' opacity set 1
+else
+  touch "$file" &&
+  swaymsg '[title=".*"]' opacity set "$opacity"
+fi

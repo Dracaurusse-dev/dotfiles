@@ -2,13 +2,12 @@ exec --no-startup-id pipewire
 exec --no-startup-id pipewire-pulse
 exec --no-startup-id wireplumber
 
-exec qs
-
 exec discord
 exec $browser
 exec $music
 
 # app_id or class, seen with smaymsg -t get_tree
-assign [app_id="discord"] workspace number $discordWP
-assign [app_id="spotify"]  workspace number $musicWP
-assign [app_id="helium"]  workspace number $browserWP
+assign [app_id="discord"] 	workspace D
+assign [app_id="spotify"]  	workspace M
+assign [app_id="helium"]  	workspace B
+assign [class="steam.*"] 	workspace G

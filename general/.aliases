@@ -13,7 +13,7 @@ shopt -s cdspell
 alias heroicFLAT="flatpak run com.heroicgameslauncher.hgl"
 alias sober="flatpak run org.vinegarhq.Sober"
 alias mc=PolyMC
-alias spotify="env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
+#alias spotify="env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
 alias emu_3DS="flatpak run org.azahar_emu.Azahar"
 alias citra=emu_3DS
 alias 3ds=citra
@@ -25,6 +25,7 @@ alias gba=emu_GBA
 alias phone="scrcpy -w --turn-screen-off"
 alias mindustry="flatpak run com.github.Anuken.Mindustry"
 alias apdoom="/home/lucas/comp/linux?/crispy-apdoom -game doom -apserver clxrk.duckdns.org:38281 -applayer doomguy"
+alias sways="dbus-run-session sway --unsupported-gpu"
 
 # Error correcting aliases
 alias car="cat"
@@ -49,4 +50,5 @@ alias rl="source ~/.bashrc"
 alias doas=sudo
 alias py=python3
 alias crispy"=cd /home/lucas/comp/linux?"
-
+alias mk="make -j4 -l5"
+alias smk="sudo make -j4 -l5"

@@ -6,13 +6,22 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term    alacritty
+set $term    foot
 set $browser helium
-set $music   env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --enable-features=UseOzonePlatform -ozone-platform=wayland
+set $music   flatpak run --command=sh com.spotify.Client -c 'eval "$(sed s#LD_PRELOAD=#LD_PRELOAD=$HOME/.spotify-adblock/spotify-adblock.so:#g /app/bin/spotify)"'
 
-set $codeWP    5
-set $discordWP 6
-set $browserWP 7
-set $musicWP   8
-set $gameWP    9
+set $codeWP    C
+set $discordWP D
+set $browserWP B
+set $musicWP   M
+set $gameWP    G
 
+set $border_focused #ff0000
+set $border_unfocused #ff0000
+set $focused_background #F19CBB
+set $unfocused_background #222222
+set $font_color #ff0000
+
+client.focused $border_focused $focused_background $font_color
+client.unfocused $border_unfocused $unfocused_background $font_color
+client.focused_inactive $border_unfocused $unfocused_background $font_color

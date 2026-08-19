@@ -52,7 +52,7 @@ input "type:keyboard" {
     	xkb_layout fr
     	xkb_options caps:escape
     	repeat_delay 350 
-    	repeat_rate 35
+    	repeat_rate 30
 }
 
 
@@ -61,23 +61,24 @@ input "type:keyboard" {
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    #status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-#    status_command i3status
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
+bar {
+    position top
+    height 25
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    #status_command while date +'%H:%M:%S'; do sleep 1; done
+    status_command i3status
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
 
 gaps inner 8
-default_border none
+default_border pixel 2
 
-for_window [class="Code"] opacity 0.96
+for_window [class=".*"] opacity 0.9
 for_window [shell="xwayland"] title_format "[XWayland] %title"

@@ -44,7 +44,6 @@ cp    $HOME/.vimrc			$1/general/
 
 cp -r $HOME/.config/hypr/*		$1/hypr/
 cp -r $HOME/.config/waybar/*		$1/waybar/
-cp -r $HOME/.config/quickshell/*	$1/quickshell/
 cp -r $HOME/.config/alacritty/*		$1/alacritty/
 cp -r $HOME/.config/fastfetch/*		$1/fastfetch/
 cp -r $HOME/.config/sway/*		$1/sway/
